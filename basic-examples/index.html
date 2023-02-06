@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="mystyles.css">
+</head>
+<body>
+    <div class = "main-container">
+        <h1>This is main heading</h1>
+    </div>
+    <div class="sub-container">
+        <h2>This is sub heading inside container</h2>
+    </div>
+    <div>
+        <h3>Table Demo</h3>
+        <table border = "1">
+            <thead>
+                <tr>
+                    <th>User Id</th><th>User Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>123</td><td>Alexandar</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h3>Form Demo</h3>
+        <form>
+            <div>
+                Name <input type = "text" name = "user" autocomplete="off">
+            </div>
+            <div>
+                Password <input type = "password" name = "pass">
+            </div>
+            <div>
+                Gender <input type = "radio" name = "gender" value = "M"> Male
+                       <input type = "radio" name = "gender" value = "F"> Female
+            </div>
+            <div>
+                <input type = "submit" value = "submit">
+            </div>
+        </form>
+        <script>
+            function fullname(first, last) {
+                return first + ' ' + last;
+            }
+            let name = fullname('Sachin', 'Tendulkar');
+            
+            console.log('Name = '+name);
+            // template strings - easiest way to create strings
+            let age = 47;
+            console.log('Name = '+name+', Age = '+age);
+            console.log(`Name = ${name}, Age = ${age}`);
+            // creating some complex URL's with template strings
+            let url = `http://api.com/${name}/${age}`;
+            console.log(`URL = ${url}`);
+            // callbacks - these are functions which are called later
+            setTimeout(function() { 
+                console.log('Executed after some time');
+            }, 5000);
+            // arrow function - simplest way of creating callbacks
+            // arrow function doesn't need { } if body of the callback
+            // is one line statement, it needs { } if body of the callbac
+            // is multi-line statements 
+            // syntax : (args) => { } [or] (args) => stmts
+            setTimeout(() => console.log('Hello arrow'), 10000);
+            // creating classes and constructors in javascript
+            class Employee { 
+                constructor(id, name, salary) {
+                    this.id = id; // you can change property names
+                    this.name = name;
+                    this.salary = salary;
+                }
+                display() {
+                    console.log(`Id: ${this.id}, 
+                        Name: ${this.name}, Salary: ${this.salary}`);
+                } 
+            }
+            // creating Employee object
+            let emp1 = new Employee(123, 'Alex', 52000);
+            let emp2 = new Employee(789, 'Bruce', 92000);
+            emp1.display(); 
+            emp2.display();
+            // finding the sum of numbers
+            function sum(a, ...b) {
+                let s = a;
+                for(let i of b) {
+                    s = s + i;
+                }
+                console.log(`Sum = ${s}`)
+            }
+            let items = [5, 20, 15, 25, 30];
+            sum(...items);
+        </script>
+    </div>
+</body>
+</html>

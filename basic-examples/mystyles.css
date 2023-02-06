@@ -1,0 +1,14 @@
+/*
+ You need to use <link href = "" rel = "" type = "">
+*/
+.main-container {
+    background-color: yellow; padding: 2px; text-align: center;
+    border-radius: 25px;
+    border: 2px solid black;
+}
+th, td {
+    padding: 5px; width: 200px; text-align: center;
+}
+th {
+    background-color: aqua;
+}

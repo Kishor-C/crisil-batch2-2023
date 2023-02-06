@@ -1,0 +1,1174 @@
+
+HTML - Content
+CSS - Style HTML Content
+Javascript -  Dynamically access HTML & CSS 
+
+
+Angular Framework - SPA - It reloads only part of the webpage when certain things happen
+	on the page
+	- Typescript (Extended form of Javascript) - Javascript 
+	- HTML
+	- CSS/SCSS
+
+
+
+Javascript
+-------------
+username = "Kishor"
+username = 10
+username = true
+username = { information: "some content", title : "some more content" } 
+
+Typescript
+----------------
+username : string = "Kishor";
+username = 25; // tsc -> error
+
+function getName(id: number) { 
+
+}
+
+getName(25);  // work
+getName("hello"); // error
+
+
+Javascript: It is a scripting language for web technologies where you can access HTML, CSS
+	at runtime, you can also validate the forms, you can many use programming 
+	constructs
+	- variables
+	- functions
+	- objects
+	- conditional statements - if, else, else if, switch
+	- loops - for, while, do while
+	- classes
+	- event handling 
+
+Pre-requistes for Angular in Javascript
+--------------------------------------------------
+New keywords of Javascript - let, const, class, extends 
+Template String
+Arrow functions
+Rest & Spread operator
+
+Rest & Spread operators
+---------------------------------
+Rest parameter is used when you want to accept 0 or more arguments in the function
+
+Rules: 
+1. You can have maximum one rest parameter
+2. If you have rest prameter it must be written as the last parameter of the function
+
+Note: rest parameter variable acts like an array, it means you can use for loop to iterate it
+
+How to create array in Javascript:
+--------------------------------------------
+let items = ["Mobiles", "Laptops", "Bags", "Covers"]
+
+for(let i of items) { 'i' gets value of items on each iteration and moves to the next item }
+
+You can iterate Rest parameter also using for loop
+
+Spread operator
+---------------------
+It is used to spread multiple values of a variable to multiple parameters of the function, 
+it is used while calling the function
+ex: items = [20, 10, 30, 50, 40]
+
+function test(x, y, z) { } 
+// now if you call test you need to call as below
+old approach: test(items[0], items[1], items[2]): here items[3] & items[4] can't be assigned
+new approach is using spread as below:
+	test(...items); here x = 20, y = 10, z = 30 and 50, 40 will be lost
+
+How to make sure that items will spread all the values and assigns without losing the data
+Solution: create a Rest parameter in a function
+
+function test(x, y, ...z) { } 
+// now you can use test(...items); here x = 20, y = 10, z = [30, 50, 40]
+
+Rest vs Spread operator
+-------------------------------
+- Rest parameter is used while creating the function
+- Spread is used while calling the function
+
+
+Typescript:
+----------------
+It is a super-set of Javascript, it supports all the features of Javascript including its own feature
+Typescripts needs to be compiled to Javascript by typescript compiler
+It supports various types that can be applied on variables, functions & constructors
+Typescript has following types:
+	- number, boolean, string, undefined, void, any, [ ], class-type: Employee, Customer
+ex: 
+	let name : string = "Alex"; // you can only assign string
+	let gender : string | undefined = undefined;
+	gender = "Male"; 
+	let employee : Employee | undefined; 
+	employee = new Employee(123, "Raj", 45000); // initializes employee object
+	employee = undefined; // initialized to undefined
+
+It has access specifiers like public, private & protected so that you can make certain things
+visible to certain extent
+
+class X { 
+	private a : number = 10;
+	protected b : number = 5;
+	public c : number = 20;
+	
+	 // some functions & constructor
+}
+
+class Z extends X { 
+	// z inherits b & c both
+}
+
+It has constructor short-hand syntax that reduces declaring & initializing the properties
+
+class Employee { 
+	id: number; // by default it is public
+	name: string; // by default its public
+	constructor(id: number, name: string) { this.id = id; this.name = name; }
+}
+// short-hand constructor syntax
+class Employee { 
+	constructor(public id: number, public name: string) { } 
+}
+Note: You must write the visibility in the parameter mandatorily which makes compiler to 
+create the property with specific visibility
+
+
+Node.js >> npm (Node Package Manager) >> Javascript libraries present over the internet
+	can be downloaded
+
+Installing Angular/cli
+----------------------------
+C:\Users\YourName\>npm -v
+C:\Users\YourName\>npm install @angular/cli  
+C:\Users\YourName\>ng version
+
+ng is the CLI tool used to create/run/manage angular application
+
+How to create angular application
+--------------------------------------------
+ng new my-app
+
+Routing: No 
+Select CSS 
+
+-----------------------------
+How to run angular application
+----------------------------------------
+npm start [or] ng serve 
+ng serve --open >> this opens angular application on your browser
+
+Building blocks of angular
+---------------------------------
+1. Components
+2. Directives
+3. Modules
+4. Routers
+5. Pipes
+6. Services
+
+
+Component: Visible part of the page and it can be developed independently from other 
+components.
+
+A web page will have these independent components which are created independently without
+knowing where it is displayed
+
+By default angular provides a root component which is already part of the page
+ 
+
+@Component({ 
+	selector: 'app-xyz',
+	templateUrl: 'xyz.html'
+})
+export class Xyz { } 
+
+xyz.html
+-----------
+
+
+
+HTML
+---------
+<app-xyz></app-xyz>
+
+
+
+
+
+
+@Component({ 
+	selector: 'app-root',
+	templateUrl: 'app.component.html'
+} )
+
+
+index.html
+------------
+body >> app-root
+
+
+Every component will have 
+1. ts file: Which will have component tag name, content location for the tag & logic
+2. html file: content of the component
+3. css file: style for the component
+4. spec.ts: testing code of the component
+
+
+Generating components
+------------------------------
+ng generate component componentName
+[or]
+ng g c componentName
+
+ex: 
+ng g c employee
+
+>> The above command creates following files 
+1. employee.component.ts 
+2. employee.component.html
+3. employee.component.css
+4. employee.component.spec.ts
+>> The above command registers the component in app.module.ts
+
+
+
+NgFor: It is an angular directive used to iterate arrays, it is used in the HTML template, we 
+need to use *ngFor as an attribute in our html element
+
+
+<div *ngFor = "let m of movies">{{m}}</div>
+
+
+Summary:
+---------------
+npm install @angular/cli
+
+ng version 
+
+ng new my-app
+
+ng serve --open >> 4200
+
+index.html >> app-root
+
+ng g c name-of-the-component
+
+{{ property }}
+
+*ngFor
+
+Adding Bootstrap third party library in angular application
+----------------------------------------------------------------------------
+my-app>> npm i bootstrap
+
+
+Angular Pipes
+-------------------
+Pipes help you transform the output to other formats, angular has following inbuilt pipes
+- date
+- uppercase
+- lowercase
+- currency
+- json
+
+ {{ property | pipeName [:options] }}
+ex: {{ dob | date}} >> 
+	{{dob | date: 'dd-MM-yyyy'}}
+		{{dob | date: 'dd-MM-yy'}}
+ex: {{ salary | currency }} >> $ 10,000
+       {{ salary | currency : 'INR' }} >> INR. 10,000
+       {{ salary | currency : 'JPY' }} >> Y. 10,0000
+ex: {{ name | uppercase }}
+
+
+Custom Pipes
+-----------------
+Creating own pipes to format certain data
+
+ng g p pipeName
+----------------------
+This creates a class with @Pipe decorator and implements an interface PipeTransform
+
+@Pipe({name: 'pipeName'})
+export class PipeName implements PipeTransform { 
+	transform(input, options) { 
+		return output;
+	}	
+}	
+{{ input | pipeName }}  >> output
+{{ input | pipeName : options }} >> output
+
+{{ name | nameFormatter : gender }}
+
+	name = 'Alex'
+	gender = Male
+	transform('Alex', 'Male') >> Mr. Alex
+
+Flow of angular application 
+-------------------------------------
+npm start >> package.json >> npm start = ng serve >> serve.js is executed and looks for
+>> angular.json 
+	- index : index.html >> app-root
+	- main : main.ts >> bootstrap(AppModule) >> AppModule >> all the application 
+							feature
+
+Note: while generating angular elements like components, pipes, services, ensure that 
+app.module.ts file is not in focus in VSCode
+
+Databinding
+------------------
+It is a feature of sharing the data between components class to components template & vice versa
+Below are the types of databinding
+1. Interpolation {{ property }} : Data flows from component class to html view - Display
+2. Event Binding ( eventName ) : Data flows from html view to component class
+3. Property Binding [ domProperty ] : Data flows from component class to html view, but it
+	is used to manipulate the DOM like enabling/disabling buttons, hiding/showing 
+		content
+4. Two way data binding [( ngModel )]: Data flows in both the direction from class to view & 
+	vice versa - used to handle form data & validating forms
+
+
+
+Event Binding: It can modify the component property by passing some action / data to the
+	component class
+	i.e., calling functions present in the component class
+	i.e., passing data to the functions present in the component class
+- Events occurs when some action is done on the HTML element, below are some events we 
+can handle like (click), (ngSubmit), (input), (change), 
+
+	<button (click) = "handleClick(tf1.value)">Button</button>
+	<input type = "text" #tf1>
+
+	handleClick(xyz) { .... }
+
+
+Property Binding: It is used to modify the DOM properties while you want to manipulate DOM
+	<p [hidden] = "componentProperty">Some content</p>
+	<button [disabled] = "status">Button</button>
+	TS File: componentProperty = true [or] false
+	TS File: status = true [or] false
+ >> Class binding: you can apply a class or remove the class using class binding
+	HTML Code
+	<Button [class.like] = "status">Like</Button> at runtime 
+	DOM level
+	<Button class = "like">Like</Button> 
+	<Button>Like</Button>
+	IN CSS: .like { properties }
+
+
+
+*ngIf: It is a structural directive like *ngFor, *ngIf is used when DOM element needs to be 
+added or removed at runtime, it can be applied on any variables 
+if variable value is true or has some other values then *ngIf is considered as true
+if variable value is undefined or false, then *ngIf is considered as false
+
+
+Using template reference is good if there are one or two inputs, but if you have more input's
+you need to increase the number of parameters in the function & also you need to take
+care of converting string to number using + operator
+- you also need to create reference for each input control
+
+Solution: Two way databinding and NgForm helps to avoid the above problem
+- it doesn't refresh the browser when you click on submit
+- it takes of converting string to number
+- it wraps all the input in one object & its property is considered based on the input name
+
+Bad approach
+-------------------
+<form (ngSubmit) ="handleSubmit(+tf1.value, tf2.value, +tf3.value)> 
+	<input type = "submit" value = "Submit">
+</form>
+Better approach
+---------------------
+<form #emp = "ngForm" (ngSubmit) = "handleSubmit(emp.value)">
+	Id <input type = "number" name = "id" ngModel>
+	Name <input type = "text" name = "name" ngModel>
+	Salary <input type = "number" name = "salary" ngModel>
+	<input type = "submit" >
+</form>
+	emp.value = { id:100 , name: "Vijay", salary: 50000 } 
+
+Note: By default ngForm & ngModel directives are not part of the AppModule, these are
+available in FormsModule, this module must be part of the AppModule, hence we need to 
+add FormsModule in the AppModule so that you can use ngForm, ngModel
+
+app.modules.ts
+-------------------
+import {FormsModule} from '@angular/forms';
+..
+@NgModule({ ..., imports: [..FormsModule, ...], })
+
+
+# number of arguments we need to increase based on the number of <input>
+# type conversion required
+# using template reference on each control
+# form submission reloads the entire page
+
+Properties of NgForm & NgModel
+----------------------------
+value: Gives the value
+valid: Returns true /  false based on the input value
+invalid: Returns true / false based on the input value
+pristine: Returns true/false based on the input control modification
+
+Note: pristine will be true by default as the input will be in un-modified state by default, when
+	you modify the input like entering characters or deleting characters 
+
+
+Two - way binding: it uses [(ngModel)] expression where data can flow in both the direction
+
+TS
+-----
+id : string | undefined
+
+handleForm(formData: any) { id = undefined  }
+
+HTML
+-------
+<input [(ngModel)] = "id">	100
+
+Limitations in TDF
+------------------------
+1. You must use two way databinding expression on each control
+2. HTML code will have control of the forms
+3. Good for only simple types of forms with 2 or 3 controls
+4. Too much of HTML code is required to control the forms like [(ngModel)], ngForm, name
+	type, #templateReference, validations like required, minLength, maxLength
+
+i.e., <input type = "text" name = "username" [(ngModel)] = "username" #tf = "username"
+		required maxLength = "15">
+
+
+
+Model Driven Form / Reactive forms
+--------------------------------------------------
+1. It controls the forms in the TS code
+2. You can make your form more dynamic when you contorl it from the code
+3. HTML code will be limited without ngForm, ngModel, name, type, required, and etc
+4. We can do validations also in the TS code as the code will have control
+5. You can create simple to complex forms
+
+How to implement Reactive Forms
+------------------------------------------
+It gives a module called ReactiveFormsModule that helps to create form controls using an object
+called FormBuilder
+FormBuilder: It is an object that helps to create form controls in your TS code
+Note: FormBuilder object is auto-created by ReactiveFormsModule you don't have to create it, 
+only thing is you need to initialize in the constructor as below
+
+	constructor(public builder: FormBuilder) { } 
+
+
+@NgModule({
+	imports : [ BrowserModule,..ReactiveFormsModule,...]
+})
+
+AngularFramework creates FormBuilder object & supplies to the constructors who uses
+FormBuilder i.e.,
+class .... { 
+ 	constructor(public builder: FormBuilder) { } 
+}
+	// builder = new FormBuilder(); not required
+
+
+TS
+------
+constructor(public builder: FormBuilder) { } 
+empForm = this.builder.group( { id: [ ], name : [ ], salary : [ ] } )
+
+HTML
+------------
+<form [formGroup] = "empForm" (ngSubmit) = "handleForm()">	
+	<input formControlName = "id" >
+	<input formControlName = "name">
+	<input formControlName = "salary">
+</form>
+	handleForm() { empForm.value; empForm.reset({}); }
+{{ empForm.controls['id'].pristine }} 
+{{ empForm.controls['id].valid }}
+{{ empForm.controls['id].value }}
+{{ empForm.value | json }} >> {"id":value, "name":value, "salary":value}
+
+
+
+Steps for MDF 
+---------------------
+1. Generate component
+2. Add ReactiveFormsModule (@angular/forms) in the AppModule imports
+3. Create FormGroup in the component class using FormBuilder.group({ }) 
+4. Bind the Form Group & Form Control to the form using [formGroup] & formControlName
+
+
+
+Validations in MDF
+--------------------------
+empForm = builder.group({id: ['', Validators.compose(Validators.Required,...)], name:[...], 
+		salary: [....]})
+
+ex: Validator.required, Validators.maxLength(15), Validators.regex(/[a-z0-9]+(crisil.com)/)
+
+<input type = 'submit' [disabled] = 'empForm.invalid'>
+<input formControlName = 'id'>
+	<span [hidden] = "empForm.controls['id'].valid || empForm.controls['id'].pristine">
+	Error Message
+	</span>
+
+
+Angular Service & Http Client
+-----------------------------------------
+Service: A reusable class that can have buisness logics accessed by one or more components
+
+Components: It must have UI logics
+
+Service: It must have buisness logics that would perform backend operations/access backend 
+	APIs
+
+Http Client: It is an object that can access Backend resources using methods like
+	- get(url): To fetch the data
+	- post(url, data): To store the data
+	- put(url, data): To update the data
+	- delete(url, data): To delete the data
+
+Components can access Service class to perform operations, It needs object of Service
+Note: Angular will only create object of Services and supplies to the components constructor
+You don't have to create Service class object in the Component
+
+
+>>NgModule >> HttpClientModule
+>> ng g s service-name
+
+@Injectable()
+class ServiceName {  
+constructor(public http : HttpClient) { } 
+
+
+
+C -> S -> HttpClient .get(url)
+		.post(url, data)
+		 .put(url, data)
+		  .delete(url, data)
+Observable: This is the object that will have response, components must subscribe to the data
+using subscribe( ) function of observable
+Note: All the HTTP methods returns Observable (is present 'rxjs' library)
+Steps to make HTTP request
+-----------------------------------
+1. Add HttpClientModule to AppModule.imports
+2. Create Service & use HttpClient in its constructor (ng g s service-name)
+3. Implement a method in service that makes HTTP calls & returns Observable
+4. Components must access service methods & subscribe to the Observable using subscribe({ })
+
+
+	getFakeData().subscribe( { next: fn, error: fn } )
+	getFakeData().subscribe( { next: (v) => this.employees = v}, error: (e) => console.log(e))
+
+
+Component to Component communication
+-------------------------------------------------------
+Here parent and child components can share each others data
+@Input( ) is used to share data from parent to child
+@Output( ) is used to share data from child to parent
+
+
+Child Component <child>
+-------------------------
+@Input( ) 
+username = undefined;
+
+
+Parent Component
+----------------------------
+<child [username] = 'parentProperty'></child>
+
+ng g c parent
+ng g c child
+
+app.component.html
+--------------------------
+<div>
+	<app-parent></app-parent>
+</div>
+
+parent.component.html
+-------------------------------
+<div>
+	<app-child></app-child>
+</div>
+child.component.html
+----------------------------
+<p>child work!</p>
+
+
+ng-contianer: it is used when you want some content without any element in the DOM, it can 
+be used only with *ngFor
+
+
+
+users = 
+[ 
+	{ id: 100, name: "Sachin", skills: ["Java", "JS", "HTML"] }, 
+	{ id: 200, name: "Virat", skills: ["CSS", "Angular"] }
+]
+
+<tr *ngFor = "let u of users">
+	<td>{{u.id}}</td> <td>{{u.name}}</td>
+	   <td>
+	      <ng-container *ngFor = "let s of skills">{{s}}</ng-contianer>
+  	</td>
+</tr>
+
+
+
+Framework
+----------------------
+It is like a semi-implemented application which takes care of most of the common features having 
+in every application 
+	
+- Typeconversion 	- string to date, java objects to sql objects & vice versa
+- Exception Handling
+- Internationalization
+- Design Pattern 
+- Transaction
+- Security
+
+Spring Frameworks helps you to create different types of applications like desktop, web, 
+ReST - based, cloud based applications (Microservices)
+
+Spring has many modules based on the type of applications you want to create
+1. Spring Context / Spring Core: Base module that is required for any spring applications
+2. Spring Jdbc: This is to interact with database
+3. Spring ORM: This is to interact with database using ORM (Object Relational Mapping)
+4. Spring Web: This is to create web applications & REST based applications
+5. Spring Boot: This accelarates creating spring application faster
+6. Spring Cloud: This is to create microservices
+
+
+
+Spring Context / Spring Core
+----------------------------------------
+It provides all the features like
+1. Object creation
+2. Design patterns like singleton, factory pattern, ...
+3. Dependency Injection: It is a process of supplying an object to another object
+
+
+
+
+			Without Framework
+		-------------------------------------------------------
+	class A { 		class B { 			class Z { 
+	I i1 = new Impl2();	I i1 = new Impl2();                       I i1 = new Impl2();
+
+	}		}			}
+
+			Framework
+			----------------------
+	class A { 		class B { 			class Z { 
+	I i1 = getBean("x");	I i1 = getBean("x");                       I i1 = getBean("x");
+
+	}		}			}
+
+Configuration
+x: Impl2				x = new Impl2( )
+
+
+
+Spring maintains all the dependencies in its container called spring context/spring core, the 
+process of object creation is reverse hence its also called as Inversion of Control (IoC)
+
+
+Spring libraries needs to be downloaded from the maven repository
+
+
+maven repository - mysql, derby, spring, orm, jdbc, etc
+
+
+Java Project >> pom.xml >> dependencies (dependency*)
+
+
+----pom.xml----
+<project>
+[...]
+	<dependencies>
+		<dependency>
+			<groupId>...</groupId>
+			<artifactId>...</artifactId>
+			<version>...</version>
+		</dependency>
+
+		<dependency>
+
+		</dependency>
+	</dependencies>
+[...]
+</project>
+
+interface X { 
+	void save(...);
+}
+
+class Y implements X { 
+	save(...) { .... }
+}
+class Z implements X { 
+	save(...) { .... }
+}
+
+
+<bean id = "b1" class = "com.crisil.Z"></bean>
+
+	Object getBean("b1")
+				new Y( );
+
+
+
+
+Spring Jdbc
+----------------
+It is a module provides us API's to interact with any Database like Oracle, MySQL, Derby, 
+H2 (in-memory)
+
+It gives us two classes that helps you to simplify performing DB operations
+
+1. DriverManagerDataSource
+2. JdbcTemplate
+
+
+DriverManagerDataSource has properties like username, password, url, driverClassName which
+takes database credentials, DMDS establishes connection with the database as per the credentials
+Note: This class has a logic to connect & disconnect from the DB
+
+
+JdbcTemplate: It gives methods to perform crud operations by connecting to the database, it
+depends on DMDS, some of the methods are
+	- update(query, arguments) // insert, update, delete
+	- queryForObject(....) // selects a single record 
+	- query(...) // select multiple records
+
+DMDS & JdbcTemplate must be configured as a bean in the XML so that spring container 
+supplies the dependency
+
+<bean id = "ds" class = "org.springframework.....DriverManagerDataSource">
+	<property name = "username" value = "root" />
+	<property name = "password" value = "root" />
+	<property name = "url" value = "jdbc:mysql://ip:port" />
+	<property name = "driverClassName" value = "com.mysql.jdbc.Driver" />
+</bean>
+
+<bean id = "template" class = "org.springframework......JdbcTemplate">
+	<property name = "datasource"  ref = "ds">
+</bean>
+
+JdbcTempalte jdbc = ctx.getBean("template");
+
+jdbc.update("insert into employee values(....)");
+
+
+Note: Above ctx.getBean("template") is not necessary when you have full - fledged MVC 
+architecture, because JdbcTemplate needs to used in DAO layer so you need just supply the
+JdbcTemplate as a dependency using <bean> tag for DAO, then DAO object should be supplied
+to Service layer & in controller Service layer object must be supplied
+
+Dependency Injection Flow in MVC
+DMDS -> JdbcTemplate -> DAO -> Service -> Controller 
+
+Note: If you call a method in controller then it calls method in service which inturn calls method
+in DAO that intrun calls method of JdbcTemplate and so on.
+
+Below are the classes we may need to create in Full-fledged MVC
+1. DAO depends on JdbcTemplate: property for jdbcTemplate
+2. Service depends on DAO: property for dao
+3. Controller(Main class) // now we are not creating the real controller class
+
+XML Configuration will be
+-----------------------------------
+<bean id = "ds" class = "org.springframewor....DriverManagerDataSource">
+	....
+</bean>
+<bean id = "jdbc" class = "org.springfraewor.....JdbcTemplate">
+	<property name = "datasource" ref = "ds">
+</bean>
+<bean id = "dao" class = "com.crisil.DAO">
+	<property name = "jdbcTemplate" ref = "jdbc">
+</bean>
+<bean id = "service" class = "com.crisil.Service">
+	<property name = "dao" ref = "dao">
+</bean>
+
+
+Code:
+Service s = ctx.getBean("service");
+s.save(employee); >> dao.store(emp) >> jdbc.update("insert ....")
+
+
+
+store & retrieve
+---------------------
+Table: employee -> id (primary_key), name & salary (MySQL)
+Employee class -> id, name & salary setter & getter method
+EmployeeDao interface -> CRUD abstract methods
+EmployeeDaoImpl implements EmployeeDao { 
+	
+	JdbcTemplate template; // setter method so that spring can initialize it
+	// some crud methods
+} 
+EmployeeService { 
+	EmployeeDao dao; // setter method
+	// some DAO crud methods calling method
+}		<bean id = "empService" class = "EmployeeService">
+
+EmployeeController { 
+	main (...) { 
+		EmployeeService s = ctx.getBean("empService")
+		s.save(emp); 
+	}
+}
+
+
+username : JAVA_TRAINING
+password: Training$2023
+Hostname: mumchdba45
+Port: 1821
+SID: L12BIRSD
+
+	Test the connection
+
+employee_yourname
+
+create table employee_kishor(
+	id number(5) primary key,name varchar2(15), salary number(10,2)
+);
+
+insert into employee_kishor values(1, 'Alex', 40000);
+commit;
+select * from employee_kishor;
+
+
+
+Implementing following things
+---------------------------------------
+Employee class - id, name & salary
+EmployeeDao - store(Employee), fetchEmployees()
+EmployeeDaoImpl
+EmployeeService
+EmployeeController
+
+beans.xml >> configure DMDS, JT, DAO, Service
+
+For jdbc template configuration use below URL
+https://github.com/Kishor-C/Framework-Configuration
+
+
+pom.xml
+---------
+spring-jdbc: DMDS, JdbcTemplate
+ojdbc6: OracleDriver
+
+
+
+
+Configure - DMDS, JT, DAO, Service
+Employee
+
+JdbcTemplate : update(query, value, value, value)	1, 0
+
+
+
+class Dao1 implements EmployeeDao{
+	JdbcTemplate
+}
+class Dao2 implements EmployeeDao{
+	HibernateTemplate
+}
+
+
+class Service {
+	private EmployeeDao dao;
+}
+	<bean id = "dao1" class = "DAO1">
+		<property name = 'template' ref = 'jdbcTemplate'>
+
+	<bean id = "dao2" class = "DAO2">
+		<property name = 'template' ref = 'hibernateTemplate'>
+	</bean>
+
+	<bean id = "service" class = "EmployeeService">
+		<property name = "dao" ref = "dao1">
+	</bean>
+	
+
+public class EmployeeService { 
+
+	private EmployeeDao dao;
+	// generate setters
+
+	public int save(Employee emp) { 
+		return dao.store(emp); 
+	}
+}
+
+XML
+----------
+<bean id = "service" class = "com.crisil.EmployeeService">
+	<property name = "dao" ref = "empDao"></property>
+</bean>
+// Don't use TestDao as its incomplete because in real time we use Service object
+TestService >> main(...) >> EmployeeService s = (....)ctx.getBean("service");
+			Employee emp = new Employee(.............);
+			s.save(emp); // should store the emp in the DB
+
+
+
+
+interface EmployeeDao { }
+class EmployeeDaoImpl implements EmployeeDao {  }
+
+class EmployeeDaoImpl2 implements EmployeeDao {  }
+
+
+class EmployeeService {
+	private EmployeeDao dao; // dao = new EmployeeDaoImpl()
+	private EmployeeDao dao2; // dao = new EmployeeDaoImpl2()	
+}
+
+<bean id = "empDao1" class = "com.EmployeeDaoImpl">
+<bean id = "empDao2" class = "com.EmployeeDaoImpl2">
+<bean id = "service" class = "com.EmployeeService">
+	name = dao ref =  empDao1
+	name = dao2 ref = empDao2 
+</bean>
+
+
+OLD
+-------
+class EmployeeDaoImpl1 implements EmployeeDao { 
+	JdbcTemplate template;
+	setTemplate(template) { } 
+}
+class EmployeeService { EmployeeDao dao }
+<bean id = "jtemplate" class = "org.....JdbcTemplate">
+	<property ref = datasource>
+</bean>
+<bean id = "empDao" class = "com.crisil.EmployeeDaoImpl1">
+	<property name = "template" ref = "jtemplate"/>
+</bean>
+<bean id = "service" class = "com.crisil.EmployeeServie">
+<property name = "dao" ref = "empDao">
+						SC[J, D1, S1]
+NEW
+------
+@Repository
+class EmployeeDaoImpl2 implements EmployeeDao { 
+	@Autowired
+	JdbcTemplate template;
+	
+}
+@Service
+class EmployeeService { 
+	@Autowired
+	private EmployeeDao dao;
+}
+
+XML>>> <component-scan base-package = "com">
+
+Steps for auto-configuration
+-------------------------------------
+1. component-scan in xml file 
+2. Using @Repository on DAO classes
+3. Using @Service on Service classes
+4. Using @Autowired on dependencies
+
+Note: Objects created with annotations will have class-name as their bean-ids, but
+the first letter will be in lowercase
+ex: If your class name is EmployeeDaoImpl, then its bean id will be
+	employeeDaoImpl
+Step1: <context:component-scan base-package = "com" />
+
+
+
+select * from employee;
+
+Jdbc
+ResultSet rs = statement.executeQuery("select * from employee");
+List<Employee> list = new ArrayList<Employee>();
+while(rs.next())
+{					rs -> employee
+    int x = rs.getInt("id") //2				id    name   salary
+   String y = rs.getString("name") //A		    	2        A         35000
+   double z = rs.getDouble("salary") // 35000	 rs =>	1        B         85000
+   Employee e = new Employee(x, y, z)			5        C         30000
+   list.add(e);					8        D         45000
+}
+
+list.size() // 4
+// Spring JDBC gives you a RowMapper interface that takes care of converting ResultSet to 
+Java object
+RowMapper has a method called map(int row, ResultSet)
+
+class EmployeeMapper implements RowMapper<Employee> { 
+	Employee map(int row, ResultSet rs) { 
+		return new Employee(rs.getInt("id"), rs.getString("name"), 
+					rs.getDouble("salary");
+	}
+}
+Employee e = jdbcTemplate.queryForObject("select * from employee where id = ?", 
+				new EmployeeMapper( ), 8);
+
+List<Employee> list = jdbcTemplate.query("select * from employee", new EmployeeMapper( ));
+
+
+
+
+_______________________________Spring Boot____________________________
+- It is a module which automates many generic configurations and simplifies 
+developing spring applications
+- No need of any XML file
+- It can automatically scan classes to register in spring container, like @Service, @Repository, 
+	@RestController
+- All the application configuration can be written in property file called application.properties
+	like database credentials, server configurations, cloud configuraitons and many
+- Spring Boot has starter libraries that can auto-configure the setup based on the libraries
+	- spring boot starter web: This auto-configures server, component-scanning, 
+		spring container 
+	- spring boot starter data jpa: This auto-configures DMDS, JT, and many other
+		database related objects & also you don't have to implement DAO layer
+		at all, ex: query(...), queryForObject(...), update(...) are all done
+		automatically for you
+
+How spring automates the things
+--------------------------------------------
+@SpringBootApplication: This annotation is the one that takes care of auto-configuration, 
+an entry point must load this annotated class.
+
+i.e.,
+@SpringBootApplication
+public class App {
+	public static void main() { 
+		SpringApplication.run(App.class); // starts auto-configuration 
+	}
+}
+Non-Spring Boot
+------------------------
+interface EmployeeDao {  save(), fetch(), fetchAll(), update(), delete() }
+
+@Repository
+class EmployeeDaoImpl implements EmployeeDao { 
+	@Autowired JdbcTemplate template;
+	/* implement all the crud methods */ 
+}
+@Service 
+class EmployeeService { 
+	@Autowired   private EmployeeDao dao;	dao.save(), dao.fetch(), dao.delete()
+} 
+
+XML >> component-scan
+		bean: DriverManagerDatasource(username, password, url, dcn)
+			bean: JdbcTemplate
+
+NO XML : application.properties
+		username = root
+		password = root123
+		url = jdbc:oracle:thin@host:port/sid
+
+Create DMDS -> JT
+JpaRepository<T, ID> : save(T), deleteById(ID), findById(ID), findAll()
+@Entity @Table(name = "employee_yourname")
+class Employee { 
+	
+	int id;	// column id
+	String name;
+	double salary;
+}
+
+interface EmployeeDao extends JpaRepository<Employee, Integer> { }
+	save(Employee), deleteById(Integer), findById(Integer), 
+		findAll() returns List<Employee>
+
+
+@Service
+public class EmployeeService [ 
+	@Autowired
+	EmployeeDao dao;
+		store(Employee emp) { dao.save(emp); }
+}
+	save -> insert into employee_yourname values (emp.getId(), emp.getName(), 
+				emp.getSalary())
+
+
+@SpringBootApplication
+
+
+
+Spring Initializr: Gives a project template, choose Maven & most of the dependencies
+
+
+
+
+Webservice: It is used to exchange the data in JSON format so that any technology can 
+understand
+
+
+	Google Pay			Banking Webservices
+	(A)				HDFC
+					SBI
+					ICICI
+					BankofBaroda
+
+
+				@RestController
+				@RequestMapping("/api")
+
+			@GetMapping : Http Method GET
+			@PostMapping: Http Method Post
+			@PutMapping: Http Method PUT
+			@DeleteMapping: Http Method Delete
+
+Browser -> Test webservice
+		Get
+
+Postman -> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
